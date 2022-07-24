@@ -7,9 +7,9 @@
     "npm": ">=8.1"
   },
   "author": {
-    "email": "kozackunisoft@gmail.com",
-    "name": "Alex Kozack",
-    "url": "https://kozack.me"
+    "email": "",
+    "name": "",
+    "url": ""
   },
   "main": "packages/main/dist/index.cjs",
   "scripts": {
@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "electron-updater": "5.0.5",
+    "sqlite3": "^5.0.10",
     "vue": "3.2.37"
   }
 }
