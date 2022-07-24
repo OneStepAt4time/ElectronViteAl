@@ -2,9 +2,14 @@ import {BrowserWindow} from 'electron';
 import {join} from 'path';
 import {URL} from 'url';
 
+
 async function createWindow() {
   const browserWindow = new BrowserWindow({
     show: false, // Use 'ready-to-show' event to show window
+    // set width and height to full screen to make sure that the window is visible
+    width: 2200,
+    height: 1600,
+
     webPreferences: {
       webviewTag: false, // The webview tag is not recommended. Consider alternatives like iframe or Electron's BrowserView. https://www.electronjs.org/docs/latest/api/webview-tag#warning
       preload: join(__dirname, '../../preload/dist/index.cjs'),
