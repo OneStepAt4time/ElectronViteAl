@@ -39,64 +39,12 @@ export default {
           icon:'pi pi-fw pi-database',
           tooltip:'Tabelle',
           to: '/tables',
-          // items:[
-          //   {
-          //     label: 'Alloggiati',
-          //     icon: 'pi pi-fw pi-user-plus',
-          //     to: '/alloggiati',
-          //   },
-          //   {
-          //     label:'Clienti',
-          //     icon:'pi pi-fw pi-user',
-          //     to: '/clienti',
-          //   },
-          //   {
-          //     label:'PoliziadiStato',
-          //     icon:'pi pi-fw pi-copy',
-          //     to: '/poliziadistato',
-          //   },
-          // ],
-        },
-        // {
-        //   label:'Carica File',
-        //   icon:'pi pi-fw pi-upload',
-        //   items:[
-        //     {
-        //       label:'Schedina Polizia di Stato',
-        //       icon:'pi pi-fw pi-file',
-        //       to:'/uploads',
-        //     },
-        //     {
-        //       label:'Excel / CSV',
-        //       icon:'pi pi-fw pi-file-excel',
-        //     },
-        //   ],
-        // },
-      ],
-      breadcrumbHome: {icon: 'pi pi-home', to: '/'},
-      breadcrumbItems: [
-        {label:'Computer'},
-        {label:'Notebook'},
-        {label:'Accessories'},
-        {label:'Backpacks'},
-        {label:'Item'},
-      ],
-      nestedRouteItems: [
-        {
-          label: 'Personal',
-          to: '/menu',
         },
         {
-          label: 'Seat',
-          to: '/menu/seat',
-        },
-        {
-          label: 'Payment',
-          to: '/menu/payment',
-        },
-        {
-          label: 'Confirmation',
-          to: '/menu/confirmation',
+          label:'Inserimento',
+          icon:'pi pi-fw pi-users',
+          tooltip:'Inserimento',
+          to: '/insert',
         },
       ],
     };

@@ -1,5 +1,6 @@
 import Tables from '../views/Tables.vue';
 import HomeView from '../views/HomeView.vue';
+import Housed from '../views/Housed.vue';
 
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -33,6 +34,16 @@ const routes = [
         component: () => import('../components/Comuni.vue'),
         meta: { transition: 'slide-left' },
       },
+    ],
+
+  },
+  {
+    path: '/insert',
+    name: 'Inserimento',
+    component: Housed,
+    meta: { transition: 'slide-left' },
+    children: [
+      // in caso fossero previsti più componenti, si dovrebbe fare una route per ognuna
     ],
   },
   // {
