@@ -1,6 +1,6 @@
 import {mount} from '@vue/test-utils';
 import {expect, test, vi} from 'vitest';
-import ReactiveHash from '../src/components/ReactiveHash.vue';
+import ReactiveHash from '../src/components/AddAlloggiato.vue';
 
 
 vi.mock('#preload', () => {

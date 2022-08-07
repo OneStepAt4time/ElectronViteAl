@@ -51,7 +51,7 @@ export async function getStato(codice: Nullable<string> = null, tableName = 'sta
 }
 
 export async function getComune(codice: Nullable<string> = null, tableName = 'comuni') {
-  let sql = `SELECT * FROM ${tableName}`;
+  let sql = `SELECT C.codice, c.descrizione, SUBSTR(REPLACE(c.dataFineVal, '/', '-'), 1, 10) AS data_fine_validita, IFNULL(p.descrizione, '')  || " [" || c.provincia || "]" AS desc_provincia FROM ${tableName} c LEFT JOIN province p USING (provincia) `;
   if (codice) {
     sql += ` WHERE codice = '${codice}'`;
   }
@@ -82,6 +82,22 @@ export async function getDocumento(codice: Nullable<string> = null, tableName = 
   });
 }
 
+export async function getTableAlloggiati(where_date: Nullable<string> = new Date().toISOString().substring(0, 10), tableName = 'alloggiati') {
+  let sql = `SELECT * FROM ${tableName} WHERE true `;
+  // console.log(sql);
+  if (where_date) {
+    sql += ` AND data_arrivo = '${where_date}'`;
+  }
+  console.log((sql));
+  return new Promise((resolve, reject) => {
+    db.all(sql, (err: string, rows: Nullable<any>) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(rows);
+    });
+  });
+}
 
 
 // insert into main.tipo_alloggiato (codice, descrizione) values (16, 'OSPITE SINGOLO');
