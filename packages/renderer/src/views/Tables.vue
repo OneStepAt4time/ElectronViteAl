@@ -52,22 +52,26 @@ export default {
       items: [
         {
           label: '👮 Polizia di Stato',
-
           items: [
               {
                 label: 'Tipi Alloggiato',
-                icon: '',
+                icon: 'pi pi-fw pi-user',
                 to: '/tables/tipo_alloggiato',
               },
               {
                 label: 'Tipi Documento',
-                icon: '',
+                icon: 'pi pi-fw pi-file',
                 to: '/tables/tipo_documento',
             },
             {
               label: 'Comuni',
-              icon: '',
+              icon: 'pi pi-home',
               to: '/tables/comuni',
+            },
+            {
+              label: 'Stati',
+              icon: 'pi pi-flag',
+              to: '/tables/stati',
             },
           ],
         },

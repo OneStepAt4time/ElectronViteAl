@@ -33,6 +33,12 @@ const routes = [
         component: () => import('../components/Comuni.vue'),
         meta: { transition: 'slide-left' },
       },
+      {
+        path: '/tables/stati',
+        name: 'Stati',
+        component: () => import('../components/Stati.vue'),
+        meta: { transition: 'slide-left' },
+      },
     ],
   },
   // {

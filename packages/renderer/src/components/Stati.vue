@@ -1,26 +1,24 @@
 <template>
-  <div class="grid col-12">
-    <hot-table
-      id="MyTable"
-      ref="myTable"
-      :settings="settings"
-      :data="data"
-      title="My Table"
-    />
-  </div>
+  <hot-table
+    :settings="settings"
+    :data="data"
+  />
 </template>
 
 <script>
-import {getTipoAlloggiato} from '#preload';
+
+import {getStato} from '#preload';
+import {ref} from 'vue';
 import { HotTable } from '@handsontable/vue3';
-import { registerAllModules } from 'handsontable/registry';
 import { registerLanguageDictionary, itIT } from 'handsontable/i18n';
-import { ref } from 'vue';
 
 
+import { registerAllModules } from 'handsontable/registry';
+
+// register Handsontable's modules
+registerAllModules();
 export default {
-  el: '#example',
-  name: 'TipoAlloggiato',
+  name: 'TableStati',
   components: {
     HotTable,
   },
@@ -31,11 +29,10 @@ export default {
   async setup() {
 
     await new Promise((r) => setTimeout(r, 250));
-    registerAllModules();
     registerLanguageDictionary(itIT);
     let data = ref([]);
     try {
-      data = ref(await getTipoAlloggiato());
+      data = ref(await getStato());
     } catch (e) {
       console.log(e);
     }
@@ -44,12 +41,10 @@ export default {
         data: data.value.slice(1,10),
       },
     });
-
     return {
       data,
       report,
       settings: {
-        title: 'Tipo Alloggiato',
         language: itIT.languageCode,
         locale: 'it-IT',
         colWidths: 100,
@@ -69,22 +64,6 @@ export default {
         hiddenColumns: true,
         manualColumnMove: true,
         copyPaste: true,
-        afterPlugins: [
-          'filters',
-          'dropdownMenu',
-          'showRowsSelection',
-          'showContextMenu',
-          'rowHeaders',
-          'colHeaders',
-          'manualColumnResize',
-          'manualRowResize',
-          'resizeColumns',
-          'columnSorting',
-          'contextMenu',
-          'hiddenColumns',
-          'manualColumnMove',
-          'copyPaste',
-        ],
         search: true,
         className: 'htCenter htMiddle',
         // autoColumnSize: {
@@ -104,16 +83,23 @@ export default {
         redo: true,
         columns: [
           {
-            title: 'Codice Tipo Alloggiato',
+            title: 'Codice Stato',
             data: 'codice',
             type: 'numeric',
             readOnly: true,
             alignment: 'center',
           },
           {
-            title: 'Tipo Alloggiato',
+            title: 'Stato',
             data: 'descrizione',
             type: 'text',
+            readOnly: true,
+          },
+          {
+            title: 'Data Fine Validita',
+            data: 'data_fine_validita',
+            type: 'date',
+            dateFormat: 'DD-MM-YYYY',
             readOnly: true,
           },
         ],
@@ -122,7 +108,6 @@ export default {
     };
   },
 };
-
 </script>
 
 <style src="handsontable/dist/handsontable.full.css"></style>

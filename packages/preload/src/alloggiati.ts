@@ -10,7 +10,7 @@ const db = new sqlite3.Database('alloggiati.db');
 export async function getTable(tableName: string) {
   const sql = `SELECT * FROM ${tableName}`;
   return new Promise((resolve, reject) => {
-    db.all(sql, (err: string, rows: Nullable<any>) => {
+    db.all(sql, (err: string, rows: Nullable<never>) => {
       if (err) {
         reject(err);
       }
@@ -25,7 +25,7 @@ export async function getTipoAlloggiato(codice: Nullable<string> = null, tableNa
     }
     // console.log(sql);
     return new Promise((resolve, reject) => {
-        db.all(sql, (err: string, rows: Nullable<any>) => {
+        db.all(sql, (err: string, rows: Nullable<never>) => {
             if (err) {
                 reject(err);
             }
@@ -35,13 +35,13 @@ export async function getTipoAlloggiato(codice: Nullable<string> = null, tableNa
 }
 
 export async function getStato(codice: Nullable<string> = null, tableName = 'stati') {
-  let sql = `SELECT * FROM ${tableName}`;
+  let sql = `SELECT *, SUBSTR(REPLACE(dataFineVal, '/', '-'), 1, 10) AS data_fine_validita FROM ${tableName}`;
   if (codice) {
     sql += ` WHERE codice = '${codice}'`;
   }
   // console.log(sql);
   return new Promise((resolve, reject) => {
-    db.all(sql, (err: string, rows: Nullable<any>) => {
+    db.all(sql, (err: string, rows: Nullable<never>) => {
       if (err) {
         reject(err);
       }
@@ -57,7 +57,7 @@ export async function getComune(codice: Nullable<string> = null, tableName = 'co
   }
   // console.log(sql);
   return new Promise((resolve, reject) => {
-    db.all(sql, (err: string, rows: Nullable<any>) => {
+    db.all(sql, (err: string, rows: Nullable<never>) => {
       if (err) {
         reject(err);
       }
@@ -73,7 +73,7 @@ export async function getDocumento(codice: Nullable<string> = null, tableName = 
   }
   // console.log(sql);
   return new Promise((resolve, reject) => {
-    db.all(sql, (err: string, rows: Nullable<any>) => {
+    db.all(sql, (err: string, rows: Nullable<never>) => {
       if (err) {
         reject(err);
       }
@@ -90,7 +90,7 @@ export async function getTableAlloggiati(where_date: Nullable<string> = new Date
   }
   console.log((sql));
   return new Promise((resolve, reject) => {
-    db.all(sql, (err: string, rows: Nullable<any>) => {
+    db.all(sql, (err: string, rows: Nullable<never>) => {
       if (err) {
         reject(err);
       }
